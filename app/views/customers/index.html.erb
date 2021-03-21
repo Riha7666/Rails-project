@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Customers</h1>
+<table border='2px' class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Contact</th>
+      <th>Address</th>
+      <th>Customer problem</th>
+      <th>Date</th>
+      <th>Employer Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name %></td>
+        <td><%= customer.age %></td>
+        <td><%= customer.contact %></td>
+        <td><%= customer.address %></td>
+        <td><%= customer.customer_problem %></td>
+        <td><%= customer.date %></td>
+        <td><%= customer.employer.name %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer), class: 'btn btn-success'%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="apple_pagination">
+<%= will_paginate @customers %>
+</div>
+
+<br>
+
+<%= link_to 'New Customer', new_customer_path, class: 'btn btn-success'%>
